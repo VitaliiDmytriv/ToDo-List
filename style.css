@@ -35,6 +35,8 @@ ul {
 li {
     background-color: rgba(173, 192, 230, 0.568);
     margin: 0.5rem;
+    position: relative;
+    padding: 0.5rem;
 }
 
 li:nth-of-type(odd) {
@@ -44,4 +46,19 @@ li:nth-of-type(odd) {
 li::before {
     content: attr(data-id);
     margin-right: 1rem;
+}
+
+.btnDelete {
+    display: none;
+    cursor: pointer;
+    border: 0;
+    color: red;
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+li:hover .btnDelete {
+    display: block;
 }
