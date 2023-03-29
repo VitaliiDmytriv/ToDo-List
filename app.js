@@ -6,7 +6,7 @@ const data = JSON.parse(window.localStorage.getItem("arrOfTasks"));
 // Перевіряє чи було щось в localStorage, якщо було, то записує у масив, якщо ні то створює масив
 const arrOfTasks = data === null ? [] : data;
 
-// Рендерить таски якщо були в local storage
+// Рендерить таски якщо були в localStorage
 renderTasks();
 
 // Зберігає масив в LocalStorage
@@ -22,6 +22,7 @@ function getValueFromInput() {
     if (/^.+$/.test(value)) {
         arrOfTasks.push(value);
 
+        // Оновлюємо localStorage
         saveInStorage(arrOfTasks, "arrOfTasks");
 
         // очищає інпут від попереднього тексту
@@ -31,13 +32,13 @@ function getValueFromInput() {
     }
 }
 
-// Рендерить таски
 function renderTasks() {
     // Проходить методом map по масиві тасків і записує їх у тегах li
     const result = arrOfTasks.map((el, i) => {
         return `<li 
                     data-id="${i + 1}."
                 >
+                    <span class="check"></span>
                     ${el}
                     <button class = 'btnDelete'>
                         <i class="fa-solid fa-x"></i>
