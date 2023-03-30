@@ -1,5 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
+@font-face {
+    font-family: "Font Awesome 5 Free";
+    src: url("./font/fa-solid-900.woff2") format("woff2"),
+        url("./font/fa-solid-900.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: "Roboto", sans-serif;
     background: rgb(147, 206, 255);
@@ -54,7 +67,7 @@ input {
     color: #87a1a5;
 }
 
-button {
+.btnAdd {
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
     border-radius: 3px;
@@ -77,18 +90,28 @@ ul {
 
 li {
     background-color: #f4f4f4;
-    margin: 0.5rem 0;
+    margin: 1rem 0;
     position: relative;
     padding: 0.5rem 2.4rem;
     border-radius: 4px;
+    color: #414c4e;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+    min-height: 2.45rem;
+}
+
+li.active {
+    background-color: #c7e1eb;
+    text-decoration: line-through;
+    text-decoration-color: #6bcae4;
+    text-decoration-style: solid;
 }
 
 .check {
     display: inline-block;
     position: absolute;
     left: 0.5rem;
-    width: 1.3rem;
-    height: 1.3rem;
+    width: 1.5rem;
+    height: 1.5rem;
     background-color: #e4f0f3;
     top: 0.525rem;
     border: 2px solid #6bcae4;
@@ -96,17 +119,39 @@ li {
     cursor: pointer;
 }
 
-.btnDelete {
+.check::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+    color: #6bcae4;
+    font-size: 1.4rem;
     display: none;
-    cursor: pointer;
-    border: 0;
-    color: red;
+}
+
+li.active .check::before {
+    display: block;
+}
+
+.btnDelete {
     position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #000;
+    border: 0;
+    border-radius: 5px;
+    font-size: 1rem;
+    top: 0.525rem;
     right: 0.5rem;
-    top: 50%;
-    transform: translateY(-50%);
+    cursor: pointer;
+    background-color: #fe0000;
+}
+
+li.active .btnDelete {
+    background-color: #da3a42;
 }
 
 li:hover .btnDelete {
-    display: block;
+    display: flex;
 }
